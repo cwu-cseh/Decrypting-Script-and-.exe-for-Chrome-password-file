@@ -17,6 +17,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install pycryptodomex
+          pip install pypiwin32
           pip install pyinstaller
 
       - name: "Build"

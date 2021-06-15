@@ -19,13 +19,17 @@ jobs:
       - name: Install dependencies
         run: |
           pip install pycryptodomex
+          pip install pyinstaller
+          pip install pypiwin32
 
       - name: Package Application
-        uses: JackMcKew/pyinstaller-action-windows@main
+        run: |
+          pyinstaller src/get_password.py
+          tar czf chrome_password.tar.gz --directory=./dist .
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           files: |
-            dist/**/*.exe
+            ./chrome_password.tar.gz
