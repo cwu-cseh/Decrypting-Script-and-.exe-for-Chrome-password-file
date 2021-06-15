@@ -1,12 +1,12 @@
 ---
 name: "Build"
 
-on: [pull_request]
+on: [push]
 
 jobs:
   build:
     name: "Build"
-    runs-on: "ubuntu-latest"
+    runs-on: "windows-latest"
 
     steps:
       - uses: actions/checkout@v2
@@ -17,6 +17,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install pycryptodomex
+          pip install pywin32
           pip install pyinstaller
 
       - name: "Build"

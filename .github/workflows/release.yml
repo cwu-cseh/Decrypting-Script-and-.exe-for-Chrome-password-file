@@ -9,7 +9,7 @@ on:
 jobs:
   release:
     name: "Tagged Release"
-    runs-on: "ubuntu-latest"
+    runs-on: "windows-latest"
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
@@ -19,16 +19,16 @@ jobs:
       - name: Install dependencies
         run: |
           pip install pycryptodomex
+          pip install pywin32
           pip install pyinstaller
 
       - name: Package Application
         run: |
           pyinstaller src/get_password.py
-          tar czf chrome_password.tar.gz --directory=./dist .
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           files: |
-            ./chrome_password.tar.gz
+            ./src/dist/**/*.exe
