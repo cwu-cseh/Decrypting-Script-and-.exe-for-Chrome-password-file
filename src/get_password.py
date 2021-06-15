@@ -60,3 +60,4 @@ try:
     os.remove("Loginvault.db")
 except Exception as e:
     pass
+input('Press ENTER to exit')
