@@ -1,0 +1,24 @@
+---
+name: "Build"
+
+on: [pull_request]
+
+jobs:
+  build:
+    name: "Build"
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      
+      - name: Install dependencies
+        run: |
+          pip install pyinstaller
+
+      - name: "Build"
+        run: |
+          pyinstaller get_password.py
+          echo "Build successful"
