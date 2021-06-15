@@ -24,7 +24,7 @@ jobs:
 
       - name: Package Application
         run: |
-          pyinstaller src/get_password.py
+          pyinstaller -F src/get_password.py
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
