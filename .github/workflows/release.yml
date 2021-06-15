@@ -16,10 +16,13 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Install dependencies
+        run: |
+          pip install pycryptodomex
+          pip install pywin32
+
       - name: Package Application
         uses: JackMcKew/pyinstaller-action-windows@main
-        with:
-          path: .
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:

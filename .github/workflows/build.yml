@@ -16,9 +16,11 @@ jobs:
       
       - name: Install dependencies
         run: |
+          pip install pycryptodomex
+          pip install pywin32
           pip install pyinstaller
 
       - name: "Build"
         run: |
-          pyinstaller get_password.py
+          pyinstaller src/get_password.py
           echo "Build successful"
