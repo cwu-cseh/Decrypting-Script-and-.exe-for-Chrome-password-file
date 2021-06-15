@@ -1,0 +1,29 @@
+---
+name: "Release"
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    name: "Tagged Release"
+    runs-on: "windows-latest"
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+  
+  - name: Package Application
+      uses: JackMcKew/pyinstaller-action-windows@main
+      with:
+        path: .
+
+  - uses: "marvinpinto/action-automatic-releases@latest"
+    with:
+      repo_token: "${{ secrets.GITHUB_TOKEN }}"
+      prerelease: false
+      files: |
+        dist/**/*.exe
