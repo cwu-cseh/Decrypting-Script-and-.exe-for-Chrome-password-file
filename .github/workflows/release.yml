@@ -20,7 +20,6 @@ jobs:
         run: |
           pip install pycryptodomex
           pip install pyinstaller
-          pip install pypiwin32
 
       - name: Package Application
         run: |
