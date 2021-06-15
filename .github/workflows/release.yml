@@ -19,7 +19,6 @@ jobs:
       - name: Install dependencies
         run: |
           pip install pycryptodomex
-          pip install pywin32
 
       - name: Package Application
         uses: JackMcKew/pyinstaller-action-windows@main
